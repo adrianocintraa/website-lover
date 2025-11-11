@@ -2,9 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nosso Amor</title>
   <style>
     body {
@@ -13,8 +11,9 @@
       color: #fff;
       font-family: 'Segoe UI', sans-serif;
       text-align: center;
-      overflow-x: auto;
+      overflow-x: hidden;
       overflow-y: auto;
+      padding-bottom: 0; /* Remover espaçamento extra */
     }
 
     .spotify {
@@ -47,21 +46,32 @@
     }
 
     .heart {
-      position: absolute;
+      position: fixed; /* Alterado de absolute para fixed */
       width: 20px;
       height: 20px;
       background: url('https://cdn-icons-png.flaticon.com/512/833/833472.png') no-repeat center;
       background-size: contain;
       animation: floatUp 10s linear infinite;
       opacity: 0.7;
+      z-index: 0; /* Fica atrás dos outros elementos */
+      pointer-events: none; /* Não interfere na interação */
+    }
+    
+    .text {
+      font-weight: bold;
+      padding: 20px 60px 0px;
+      line-height: 1.8;
+      position: relative;
+      z-index: 1; /* Fica acima dos corações */
     }
 
     @keyframes floatUp {
       0% {
-        transform: translateY(100vh) scale(1);
+        transform: translateY(0) scale(1); /* Começa na base da tela */
+        opacity: 0.7;
       }
       100% {
-        transform: translateY(-10vh) scale(1.5);
+        transform: translateY(-110vh) scale(1.5); /* Sobe além do topo */
         opacity: 0;
       }
     }
@@ -73,9 +83,17 @@
   </div>
 
   <div class="container">
-    <img src="foto-casal" alt="Foto do casal" class="photo" />
+    <img src="photo/WhatsApp Image 2025-04-30 at 20.41.50 (1).jpeg" alt="Foto do casal" class="photo" />
     <div class="message">Eu te amo</div>
     <div class="timer" id="timer"></div>
+  </div>
+
+  <div>
+    <p>_________________________________________________</p>
+  </div>
+
+  <div>
+    <p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis, nostrum perspiciatis voluptates, atque consequatur sed eum id modi nam numquam blanditiis explicabo molestiae voluptatum autem! Quis ullam consectetur beatae numquam?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis, nostrum perspiciatis voluptates, atque consequatur sed eum id modi nam numquam blanditiis explicabo molestiae voluptatum autem! Quis ullam consectetur beatae numquam?</p>
   </div>
 
   <script>
